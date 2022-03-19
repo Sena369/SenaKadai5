@@ -14,15 +14,13 @@ class ViewController: UIViewController {
     @IBOutlet private weak var resultLabel: UILabel!
     
     @IBAction private func calculateButton(_ sender: Any) {
-    
+        
         guard let leftValue = leftTextField.textToFloat else {
             return alertPresent(alertMessage.leftNonNumric)
         }
-        
         guard let rightValue = rightTextField.textToFloat else {
             return alertPresent(alertMessage.rightNonNumric)
         }
-        
         guard rightValue != 0  else {
             return alertPresent(alertMessage.dividedBy0)
         }
@@ -34,10 +32,9 @@ class ViewController: UIViewController {
         static let leftNonNumric = "割られる数を入力してください"
         static let rightNonNumric = "割る数を入力してください"
         static let dividedBy0 = "割る数には0を入力しないでください"
-        
     }
     
-    private func alertPresent (_ message: String ) -> Void {
+    private func alertPresent (_ message: String ) {
         let alert = UIAlertController(title: "課題5", message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(defaultAction)
