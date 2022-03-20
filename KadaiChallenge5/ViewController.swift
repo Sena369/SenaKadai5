@@ -16,25 +16,25 @@ class ViewController: UIViewController {
     @IBAction private func calculateButton(_ sender: Any) {
         
         guard let leftValue = leftTextField.textToFloat else {
-            return alertPresent(alertMessage.leftNonNumric)
+            return presentAlert(message: AlertMessage.leftNonNumric)
         }
         guard let rightValue = rightTextField.textToFloat else {
-            return alertPresent(alertMessage.rightNonNumric)
+            return presentAlert(message: AlertMessage.rightNonNumric)
         }
-        guard rightValue != 0  else {
-            return alertPresent(alertMessage.dividedBy0)
+        guard rightValue != 0 else {
+            return presentAlert(message: AlertMessage.dividedBy0)
         }
         
         resultLabel.text = String(leftValue / rightValue)
     }
     
-    private enum alertMessage {
+    private enum AlertMessage {
         static let leftNonNumric = "割られる数を入力してください"
         static let rightNonNumric = "割る数を入力してください"
         static let dividedBy0 = "割る数には0を入力しないでください"
     }
     
-    private func alertPresent (_ message: String ) {
+    private func presentAlert (message: String ) {
         let alert = UIAlertController(title: "課題5", message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(defaultAction)
